@@ -52,9 +52,9 @@ static void *ProgressObserverContext = &ProgressObserverContext;
 
     // First, show the worker windows.
     // It is important to show the windows before the progress object becomes current
-    // because showing the viewcontroller loads its NIB, and NIB loading
+    // because showing the viewcontroller the first time loads its NIB, and NIB loading
     // reports progress because it internally calls [NSData dataWithContentsOfURL:]
-    // You can move the becomeCurrentWithPendingUnitCount above these window methods
+    // You can move the becomeCurrentWithPendingUnitCount call above these window method calls
     // and watch everything go insane.
     
     self.worker1.taskDuration = self.duration1.floatValue;
