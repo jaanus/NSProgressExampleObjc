@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="WindowController">
+            <connections>
+                <outlet property="duration1" destination="FwT-DS-ogE" id="DmN-th-HdH"/>
+                <outlet property="duration2" destination="hFP-5L-rAZ" id="3po-KX-SKw"/>
+                <outlet property="progressSheet" destination="hsX-Db-yJ2" id="khh-2f-qNT"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="368" height="136"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="368" height="136"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FwT-DS-ogE">
+                        <rect key="frame" x="20" y="69" width="32" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="LfD-Tb-NkV"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="2" placeholderString="Seconds" drawsBackground="YES" id="830-B8-bIa">
+                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="yCS-K2-ijl"/>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hFP-5L-rAZ">
+                        <rect key="frame" x="60" y="69" width="32" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="Xbm-t2-08D"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="20" placeholderString="Seconds" drawsBackground="YES" id="9fd-MR-TJ2">
+                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="1ae-0T-BwD"/>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DAg-jO-9zz">
+                        <rect key="frame" x="18" y="99" width="332" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="How many seconds should the computing tasks run?" id="Mbf-bJ-FAN">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e4u-yr-jbU">
+                        <rect key="frame" x="18" y="20" width="211" height="12"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This button will launch two computation tasks." usesSingleLineMode="YES" id="U45-u8-Idf">
+                            <font key="font" metaFont="miniSystem"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SlJ-Nw-YZc">
+                        <rect key="frame" x="14" y="33" width="134" height="32"/>
+                        <buttonCell key="cell" type="push" title="Do lots of work" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rFi-ya-fr5">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="doLotsOfWork:" target="-2" id="hDU-QN-Oqy"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="SlJ-Nw-YZc" firstAttribute="leading" secondItem="FwT-DS-ogE" secondAttribute="leading" id="3Iw-Jg-EGz"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DAg-jO-9zz" secondAttribute="trailing" constant="20" symbolic="YES" id="7wF-rX-lgV"/>
+                    <constraint firstItem="e4u-yr-jbU" firstAttribute="top" secondItem="SlJ-Nw-YZc" secondAttribute="bottom" constant="8" id="8nK-ac-ZYb"/>
+                    <constraint firstItem="SlJ-Nw-YZc" firstAttribute="top" secondItem="FwT-DS-ogE" secondAttribute="bottom" constant="8" symbolic="YES" id="FfD-Zn-4vX"/>
+                    <constraint firstItem="SlJ-Nw-YZc" firstAttribute="leading" secondItem="e4u-yr-jbU" secondAttribute="leading" id="SRM-vD-SB0"/>
+                    <constraint firstItem="FwT-DS-ogE" firstAttribute="leading" secondItem="DAg-jO-9zz" secondAttribute="leading" id="U8i-7X-R3y"/>
+                    <constraint firstItem="hFP-5L-rAZ" firstAttribute="leading" secondItem="FwT-DS-ogE" secondAttribute="trailing" constant="8" id="VGF-Re-hBE"/>
+                    <constraint firstItem="DAg-jO-9zz" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="ZFa-WA-ocu"/>
+                    <constraint firstItem="DAg-jO-9zz" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="dn8-Yh-8oZ"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="e4u-yr-jbU" secondAttribute="bottom" constant="20" symbolic="YES" id="ee8-nB-pgO"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="e4u-yr-jbU" secondAttribute="trailing" constant="20" symbolic="YES" id="hAS-Z8-yPo"/>
+                    <constraint firstItem="FwT-DS-ogE" firstAttribute="top" secondItem="DAg-jO-9zz" secondAttribute="bottom" constant="8" symbolic="YES" id="hMv-Nm-39R"/>
+                    <constraint firstItem="hFP-5L-rAZ" firstAttribute="width" secondItem="FwT-DS-ogE" secondAttribute="width" id="onJ-id-eil"/>
+                    <constraint firstItem="hFP-5L-rAZ" firstAttribute="baseline" secondItem="FwT-DS-ogE" secondAttribute="baseline" id="pTr-pv-4ip"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="232" y="304"/>
+        </window>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="hsX-Db-yJ2" userLabel="Progress sheet">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="296" height="114"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="nvd-MH-RbS">
+                <rect key="frame" x="0.0" y="0.0" width="296" height="114"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yvu-ho-3ga">
+                        <rect key="frame" x="87" y="77" width="122" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Doing work…" id="GhC-4n-xhe">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <progressIndicator maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Z3n-jo-FZR">
+                        <rect key="frame" x="20" y="50" width="256" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="256" id="YzP-1k-Lyy"/>
+                        </constraints>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="progress.fractionCompleted" id="aEe-SY-Oxd"/>
+                        </connections>
+                    </progressIndicator>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gd2-QM-5WC">
+                        <rect key="frame" x="107" y="13" width="83" height="32"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9fE-Eb-aBS">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="centerX" secondItem="Yvu-ho-3ga" secondAttribute="centerX" id="2rf-o8-zPr"/>
+                    <constraint firstAttribute="bottom" secondItem="gd2-QM-5WC" secondAttribute="bottom" constant="20" symbolic="YES" id="5X9-V5-MLT"/>
+                    <constraint firstItem="Z3n-jo-FZR" firstAttribute="centerX" secondItem="gd2-QM-5WC" secondAttribute="centerX" id="6jD-eQ-YQc"/>
+                    <constraint firstAttribute="trailing" secondItem="Z3n-jo-FZR" secondAttribute="trailing" constant="20" symbolic="YES" id="9Kw-oe-oAG"/>
+                    <constraint firstItem="Yvu-ho-3ga" firstAttribute="top" secondItem="nvd-MH-RbS" secondAttribute="top" constant="20" id="Wc1-fc-ocb"/>
+                    <constraint firstItem="gd2-QM-5WC" firstAttribute="top" secondItem="Z3n-jo-FZR" secondAttribute="bottom" constant="10" id="tAL-EC-N9V"/>
+                    <constraint firstItem="Z3n-jo-FZR" firstAttribute="leading" secondItem="nvd-MH-RbS" secondAttribute="leading" constant="20" symbolic="YES" id="tvf-2E-oXz"/>
+                    <constraint firstItem="Z3n-jo-FZR" firstAttribute="top" secondItem="Yvu-ho-3ga" secondAttribute="bottom" constant="8" id="xgv-fE-Da9"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="162" y="112"/>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="i63-iQ-139"/>
+    </objects>
+</document>

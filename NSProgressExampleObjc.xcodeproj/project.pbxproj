@@ -12,6 +12,10 @@
 		EAB22C451A73CF7A00E2CCB5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAB22C441A73CF7A00E2CCB5 /* Images.xcassets */; };
 		EAB22C481A73CF7A00E2CCB5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAB22C461A73CF7A00E2CCB5 /* MainMenu.xib */; };
 		EAB22C541A73CF7A00E2CCB5 /* NSProgressExampleObjcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB22C531A73CF7A00E2CCB5 /* NSProgressExampleObjcTests.m */; };
+		EAB22C601A73CF9500E2CCB5 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB22C5E1A73CF9500E2CCB5 /* WindowController.m */; };
+		EAB22C611A73CF9500E2CCB5 /* WindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAB22C5F1A73CF9500E2CCB5 /* WindowController.xib */; };
+		EAB22C6A1A73D15D00E2CCB5 /* WorkerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB22C681A73D15D00E2CCB5 /* WorkerWindowController.m */; };
+		EAB22C6B1A73D15D00E2CCB5 /* WorkerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAB22C691A73D15D00E2CCB5 /* WorkerWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +39,12 @@
 		EAB22C4D1A73CF7A00E2CCB5 /* NSProgressExampleObjcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NSProgressExampleObjcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB22C521A73CF7A00E2CCB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAB22C531A73CF7A00E2CCB5 /* NSProgressExampleObjcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSProgressExampleObjcTests.m; sourceTree = "<group>"; };
+		EAB22C5D1A73CF9500E2CCB5 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
+		EAB22C5E1A73CF9500E2CCB5 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
+		EAB22C5F1A73CF9500E2CCB5 /* WindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WindowController.xib; sourceTree = "<group>"; };
+		EAB22C671A73D15D00E2CCB5 /* WorkerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkerWindowController.h; sourceTree = "<group>"; };
+		EAB22C681A73D15D00E2CCB5 /* WorkerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkerWindowController.m; sourceTree = "<group>"; };
+		EAB22C691A73D15D00E2CCB5 /* WorkerWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkerWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +91,8 @@
 				EAB22C441A73CF7A00E2CCB5 /* Images.xcassets */,
 				EAB22C461A73CF7A00E2CCB5 /* MainMenu.xib */,
 				EAB22C3D1A73CF7A00E2CCB5 /* Supporting Files */,
+				EAB22C6C1A73D16400E2CCB5 /* Main window */,
+				EAB22C6E1A73D16F00E2CCB5 /* Worker window */,
 			);
 			path = NSProgressExampleObjc;
 			sourceTree = "<group>";
@@ -109,6 +121,26 @@
 				EAB22C521A73CF7A00E2CCB5 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EAB22C6C1A73D16400E2CCB5 /* Main window */ = {
+			isa = PBXGroup;
+			children = (
+				EAB22C5D1A73CF9500E2CCB5 /* WindowController.h */,
+				EAB22C5E1A73CF9500E2CCB5 /* WindowController.m */,
+				EAB22C5F1A73CF9500E2CCB5 /* WindowController.xib */,
+			);
+			name = "Main window";
+			sourceTree = "<group>";
+		};
+		EAB22C6E1A73D16F00E2CCB5 /* Worker window */ = {
+			isa = PBXGroup;
+			children = (
+				EAB22C671A73D15D00E2CCB5 /* WorkerWindowController.h */,
+				EAB22C681A73D15D00E2CCB5 /* WorkerWindowController.m */,
+				EAB22C691A73D15D00E2CCB5 /* WorkerWindowController.xib */,
+			);
+			name = "Worker window";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +224,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAB22C451A73CF7A00E2CCB5 /* Images.xcassets in Resources */,
+				EAB22C611A73CF9500E2CCB5 /* WindowController.xib in Resources */,
+				EAB22C6B1A73D15D00E2CCB5 /* WorkerWindowController.xib in Resources */,
 				EAB22C481A73CF7A00E2CCB5 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,7 +245,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAB22C431A73CF7A00E2CCB5 /* main.m in Sources */,
+				EAB22C601A73CF9500E2CCB5 /* WindowController.m in Sources */,
 				EAB22C411A73CF7A00E2CCB5 /* AppDelegate.m in Sources */,
+				EAB22C6A1A73D15D00E2CCB5 /* WorkerWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +434,7 @@
 				EAB22C591A73CF7A00E2CCB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EAB22C5A1A73CF7A00E2CCB5 /* Build configuration list for PBXNativeTarget "NSProgressExampleObjcTests" */ = {
 			isa = XCConfigurationList;
@@ -406,6 +443,7 @@
 				EAB22C5C1A73CF7A00E2CCB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

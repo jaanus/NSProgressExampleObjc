@@ -7,20 +7,34 @@
 //
 
 #import "AppDelegate.h"
+#import "WindowController.h"
+
+
 
 @interface AppDelegate ()
 
-@property (weak) IBOutlet NSWindow *window;
+@property (strong, nonatomic) WindowController *windowController;
+
 @end
+
+
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    self.windowController = [[WindowController alloc] initWithWindowNibName:@"WindowController"];
+    [self.windowController showWindow:self];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+}
+
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag
+{
+    [self.windowController showWindow:self];
+    return NO;
 }
 
 @end
