@@ -59,11 +59,14 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <progressIndicator maxValue="1" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="ItE-7Y-yyc">
+                    <progressIndicator maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="ItE-7Y-yyc">
                         <rect key="frame" x="20" y="19" width="256" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="256" id="6dl-DL-A7w"/>
                         </constraints>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="self.taskProgress.fractionCompleted" id="IQH-Pu-XJ8"/>
+                        </connections>
                     </progressIndicator>
                 </subviews>
                 <constraints>
@@ -77,5 +80,6 @@
             </view>
             <point key="canvasLocation" x="103" y="130.5"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="NWv-dd-c32"/>
     </objects>
 </document>
