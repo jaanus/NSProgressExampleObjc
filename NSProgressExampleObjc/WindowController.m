@@ -50,11 +50,12 @@ static void *ProgressObserverContext = &ProgressObserverContext;
                   options:NSKeyValueObservingOptionInitial
                   context:ProgressObserverContext];
 
-    /* First, show the worker windows.
-     It is important to show the windows before the progress object becomes current
-     because showing the viewcontroller loads its NIB, and NIB loading
-     reports progress because it internally calls [NSData dataWithContentsOfURL:]
-     */
+    // First, show the worker windows.
+    // It is important to show the windows before the progress object becomes current
+    // because showing the viewcontroller loads its NIB, and NIB loading
+    // reports progress because it internally calls [NSData dataWithContentsOfURL:]
+    // You can move the becomeCurrentWithPendingUnitCount above these window methods
+    // and watch everything go insane.
     
     self.worker1.taskDuration = self.duration1.floatValue;
     [self.worker1 showWindow:self];
@@ -64,13 +65,13 @@ static void *ProgressObserverContext = &ProgressObserverContext;
     
     [self fixWindowPositions];
     
-    /* Now that the UI is set up and we hope nothing else would run that would report unwanted progress,
-     can finally become current ourselves and show the sheet. */
+    // Now that the UI is set up and we hope nothing else would run that would report unwanted progress,
+    // can finally become current ourselves and show the sheet.
     
-    [self.window beginSheet:self.progressSheet completionHandler:nil];
     [self.progress becomeCurrentWithPendingUnitCount:1];
+    [self.window beginSheet:self.progressSheet completionHandler:nil];
     
-    /* Kick off the child processes that will do some actual work and report progress back to us. */
+    // Kick off the child processes that will do some actual work and report progress back to us.
     
     [self.worker1 doWork];
     [self.worker2 doWork];
@@ -96,7 +97,7 @@ static void *ProgressObserverContext = &ProgressObserverContext;
     {
         NSProgress *progress = object;
         
-//        NSLog(@"fraction completed: %f", progress.fractionCompleted);
+        // NSLog(@"fraction completed: %f", progress.fractionCompleted);
         
         if (progress.fractionCompleted == 1) {
             [self teardownProgressUi];
