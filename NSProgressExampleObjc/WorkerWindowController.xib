@@ -6,7 +6,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="WorkerWindowController">
             <connections>
-                <outlet property="progressIndicator" destination="ItE-7Y-yyc" id="O5W-c5-OiZ"/>
                 <outlet property="progressSheet" destination="N7N-iT-cqa" id="oo9-mu-trQ"/>
                 <outlet property="statusLabel" destination="D2p-hd-zxM" id="pnl-jn-y1Q"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -65,7 +64,7 @@
                             <constraint firstAttribute="width" constant="256" id="6dl-DL-A7w"/>
                         </constraints>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="self.taskProgress.fractionCompleted" id="IQH-Pu-XJ8"/>
+                            <binding destination="-2" name="value" keyPath="self.taskProgress.fractionCompleted" id="vtC-Kc-Kqc"/>
                         </connections>
                     </progressIndicator>
                 </subviews>

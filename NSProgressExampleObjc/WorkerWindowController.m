@@ -14,7 +14,6 @@
 
 @property (weak) IBOutlet NSTextField *statusLabel;
 @property (strong) IBOutlet NSWindow *progressSheet;
-@property (weak) IBOutlet NSProgressIndicator *progressIndicator;
 @property (strong, nonatomic) NSProgress *taskProgress;
 
 @end
