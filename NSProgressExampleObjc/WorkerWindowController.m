@@ -50,7 +50,7 @@
 - (void)longComputationTask
 {
     /// One iteration length in seconds
-    CGFloat iterationLength = 0.25f;
+    CGFloat iterationLength = 0.05f;
     
     NSInteger iterationCount = self.taskDuration / iterationLength;
     
@@ -68,7 +68,7 @@
 //            NSLog(@"worker %@, iteration %ld of %ld", self, (long)i, (long)iterationCount);
         }
 
-        // If we are cancelled when the task is done, we no longer want the handler to be called
+        // If we are cancelled when the task is done, we no longer want to be called
         taskProgress.cancellationHandler = nil;
         
         [self longTaskIsDone:YES];

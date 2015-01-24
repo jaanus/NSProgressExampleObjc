@@ -62,14 +62,21 @@ static void *ProgressObserverContext = &ProgressObserverContext;
     self.worker2.taskDuration = self.duration2.floatValue;
     [self.worker2 showWindow:self];
     
+    [self fixWindowPositions];
+    
     /* Now that the UI is set up and we hope nothing else would run that would report unwanted progress,
      can finally become current ourselves and show the sheet. */
     
     [self.window beginSheet:self.progressSheet completionHandler:nil];
     [self.progress becomeCurrentWithPendingUnitCount:1];
     
+    /* Kick off the child processes that will do some actual work and report progress back to us. */
+    
     [self.worker1 doWork];
     [self.worker2 doWork];
+    
+    // Everything is set up and data is flowing now. We get progress updates with KVO and bindings.
+    // Eventually, either the progress hits 1, or we cancel. In both cases, the progress UI gets torn down.
     
     [self.progress resignCurrent];
 }
@@ -115,6 +122,16 @@ static void *ProgressObserverContext = &ProgressObserverContext;
                          context:ProgressObserverContext];
         [self.window endSheet:self.progressSheet];
     });
+}
+
+- (void)fixWindowPositions
+{
+    CGFloat x = CGRectGetMaxX(self.window.frame) + 32;
+    CGFloat y = CGRectGetMaxY(self.window.frame);
+    [self.worker1.window setFrameTopLeftPoint:NSMakePoint(x, y)];
+    
+    CGFloat y2 = CGRectGetMinY(self.worker1.window.frame) - 32;
+    [self.worker2.window setFrameTopLeftPoint:NSMakePoint(x, y2)];
 }
 
 @end
