@@ -106,7 +106,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yvu-ho-3ga">
-                        <rect key="frame" x="87" y="77" width="122" height="17"/>
+                        <rect key="frame" x="104" y="77" width="88" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Doing work…" id="GhC-4n-xhe">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -131,6 +131,9 @@
 Gw
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="cancel:" target="-2" id="Evh-df-dfU"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

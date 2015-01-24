@@ -16,7 +16,6 @@
 @property (strong) IBOutlet NSWindow *progressSheet;
 @property (weak) IBOutlet NSProgressIndicator *progressIndicator;
 
-
 @end
 
 
@@ -56,6 +55,9 @@
     NSInteger iterationCount = self.taskDuration / iterationLength;
     
     NSProgress *taskProgress = [NSProgress progressWithTotalUnitCount:iterationCount];
+    taskProgress.cancellationHandler = ^{
+        [self longTaskIsDone:NO];
+    };
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 0; i < iterationCount; i++) {
@@ -66,21 +68,24 @@
 //            NSLog(@"worker %@, iteration %ld of %ld", self, (long)i, (long)iterationCount);
         }
 
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self longTaskIsDone:YES];
-        });
+        // If we are cancelled when the task is done, we no longer want the handler to be called
+        taskProgress.cancellationHandler = nil;
+        
+        [self longTaskIsDone:YES];
     });
 }
 
 - (void)longTaskIsDone:(BOOL)completed
 {
-    [self.progressIndicator stopAnimation:self];
-    [self.window endSheet:self.progressSheet];
-    if (completed) {
-        self.statusLabel.stringValue = @"The answer is 42.";
-    } else {
-        self.statusLabel.stringValue = @"The task was cancelled.";
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.progressIndicator stopAnimation:self];
+        [self.window endSheet:self.progressSheet];
+        if (completed) {
+            self.statusLabel.stringValue = @"The answer is 42.";
+        } else {
+            self.statusLabel.stringValue = @"The task was cancelled.";
+        }
+    });
 }
 
 @end

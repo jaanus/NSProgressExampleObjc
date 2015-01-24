@@ -35,12 +35,15 @@ static void *ProgressObserverContext = &ProgressObserverContext;
     
     self.worker1 = [[WorkerWindowController alloc] init];
     self.worker2 = [[WorkerWindowController alloc] init];
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
 - (IBAction)doLotsOfWork:(NSButton *)sender {
     
     self.progress = [NSProgress progressWithTotalUnitCount:1];
+    __weak WindowController *weakSelf = self;
+    self.progress.cancellationHandler = ^{
+        [weakSelf teardownProgressUi];
+    };
     
     [self.progress addObserver:self
                forKeyPath:NSStringFromSelector(@selector(fractionCompleted))
@@ -48,7 +51,7 @@ static void *ProgressObserverContext = &ProgressObserverContext;
                   context:ProgressObserverContext];
 
     /* First, show the worker windows.
-     It is important to do this before the progress object becomes current
+     It is important to show the windows before the progress object becomes current
      because showing the viewcontroller loads its NIB, and NIB loading
      reports progress because it internally calls [NSData dataWithContentsOfURL:]
      */
@@ -59,6 +62,9 @@ static void *ProgressObserverContext = &ProgressObserverContext;
     self.worker2.taskDuration = self.duration2.floatValue;
     [self.worker2 showWindow:self];
     
+    /* Now that the UI is set up and we hope nothing else would run that would report unwanted progress,
+     can finally become current ourselves and show the sheet. */
+    
     [self.window beginSheet:self.progressSheet completionHandler:nil];
     [self.progress becomeCurrentWithPendingUnitCount:1];
     
@@ -67,6 +73,14 @@ static void *ProgressObserverContext = &ProgressObserverContext;
     
     [self.progress resignCurrent];
 }
+
+- (IBAction)cancel:(id)sender {
+    [self.progress cancel];
+}
+
+
+
+#pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                         change:(NSDictionary *)change context:(void *)context
@@ -78,12 +92,7 @@ static void *ProgressObserverContext = &ProgressObserverContext;
 //        NSLog(@"fraction completed: %f", progress.fractionCompleted);
         
         if (progress.fractionCompleted == 1) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [progress removeObserver:self
-                              forKeyPath:NSStringFromSelector(@selector(fractionCompleted))
-                                 context:ProgressObserverContext];
-                [self.window endSheet:self.progressSheet];
-            });
+            [self teardownProgressUi];
         }
     }
     else
@@ -91,6 +100,21 @@ static void *ProgressObserverContext = &ProgressObserverContext;
         [super observeValueForKeyPath:keyPath ofObject:object
                                change:change context:context];
     }
+}
+
+
+
+#pragma mark - Utilities
+
+- (void)teardownProgressUi
+{
+    // Don’t really know which queue is calling us. Progress cancellation, KVO, …
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.progress removeObserver:self
+                      forKeyPath:NSStringFromSelector(@selector(fractionCompleted))
+                         context:ProgressObserverContext];
+        [self.window endSheet:self.progressSheet];
+    });
 }
 
 @end
