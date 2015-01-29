@@ -6,6 +6,6 @@ Features shown:
 
 * Creating parent/child NSProgress objects with an implicit parent established through `[NSProgress becomeCurrentWithPendingUnitCount:]`
 * Running code on relevant progress completion in both the children and parents
-* Propagating cancellation from children to parents
+* Propagating cancellation from parent to children
 
 [Read the blog post about this.](http://jaanus.com/blog/2015/01/24/an-example-on-how-to-use-nsprogress/)
