@@ -15,6 +15,7 @@
 @property (weak) IBOutlet NSTextField *statusLabel;
 @property (strong) IBOutlet NSWindow *progressSheet;
 @property (strong, nonatomic) NSProgress *taskProgress;
+@property (weak) IBOutlet NSProgressIndicator *progressIndicator;
 
 @end
 
@@ -72,6 +73,9 @@
             // Simulate hard work and increment the count when one unit is done.
             [NSThread sleepForTimeInterval:iterationLength];
             self.taskProgress.completedUnitCount++;
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                self.progressIndicator.doubleValue = self.taskProgress.fractionCompleted;
+            });
 
             // If you want, uncomment this to log each iteration tn the console.
             // NSLog(@"worker %@, iteration %ld of %ld", self, (long)i, (long)iterationCount);

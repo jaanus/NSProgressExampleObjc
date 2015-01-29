@@ -19,6 +19,7 @@
 @property (weak) IBOutlet NSTextField *duration2;
 @property (strong, nonatomic) NSProgress *progress;
 @property (strong) IBOutlet NSWindow *progressSheet;
+@property (weak) IBOutlet NSProgressIndicator *progressIndicator;
 
 @end
 
@@ -98,6 +99,14 @@ static void *ProgressObserverContext = &ProgressObserverContext;
         NSProgress *progress = object;
         
         // NSLog(@"fraction completed: %f", progress.fractionCompleted);
+        
+        if ([NSThread isMainThread]) {
+            self.progressIndicator.doubleValue = progress.fractionCompleted;
+        } else {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                self.progressIndicator.doubleValue = progress.fractionCompleted;
+            });
+        }
         
         if (progress.fractionCompleted == 1) {
             [self teardownProgressUi];
