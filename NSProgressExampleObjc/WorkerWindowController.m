@@ -71,7 +71,10 @@
 
             // Simulate hard work and increment the count when one unit is done.
             [NSThread sleepForTimeInterval:iterationLength];
-            self.taskProgress.completedUnitCount++;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.taskProgress.completedUnitCount++;
+            });
 
             // If you want, uncomment this to log each iteration tn the console.
             // NSLog(@"worker %@, iteration %ld of %ld", self, (long)i, (long)iterationCount);
